@@ -1,0 +1,7 @@
+{
+  "version": 3,
+  "sources": ["src/app/features/home/welcome/welcome.css"],
+  "sourcesContent": [".carousel {\r\n  border-radius: 8px;\r\n  overflow: hidden;\r\n}\r\n"],
+  "mappings": ";AAAA,CAAC;AACC,iBAAe;AACf,YAAU;AACZ;",
+  "names": []
+}

@@ -1,0 +1,51 @@
+<div class="table-responsive">
+  <div class="mb-2 text-start">
+    <button class="btn btn-primary" (click)="toggleImage()">
+      <i-bs name="eye"></i-bs>
+      {{ showImage ? 'Ocultar Imágenes' : 'Mostrar Imágenes' }}
+    </button>
+  </div>
+
+  <table class="table table-striped table-hover">
+    <thead>
+      <tr>
+        <th>Imagen</th>
+        <th>Producto</th>
+        <th>Código</th>
+        <th>Disponible</th>
+        <th>Precio</th>
+        <th>Rating</th>
+        <th>Acciones</th>
+      </tr>
+    </thead>
+    <tbody>
+      @for (product of products(); track product.id_producto) {
+        <tr>
+          <td>
+            @if (showImage) {
+              <img [src]="product.imagen | imagePipe"
+                   [title]="product.nombre | uppercase"
+                   [width]="imageWidth"
+                   [style.margin.px]="imageMargin">
+            }
+          </td>
+          <td>{{ product.nombre }}</td>
+          <td>{{ product.codigo | lowercase }}</td>
+          <td>{{ product.fechaVenta | date:'dd/MM/yyyy' }}</td>
+          <td>{{ product.precio | currency:'CLP':'symbol-narrow':'4.0-0' }}</td>
+          <td>
+            <app-star [starRating]="product.puntuacion"></app-star>
+          </td>
+          <td>
+            <button class="btn btn-danger btn-sm me-1" (click)="deleteProduct(product.id_producto!)">
+              <i-bs name="trash"></i-bs>
+            </button>
+            <button class="btn btn-warning btn-sm" (click)="updateProduct(product)">
+              <i-bs name="pencil"></i-bs>
+            </button>
+          </td>
+        </tr>
+      }
+    </tbody>
+  </table>
+</div>

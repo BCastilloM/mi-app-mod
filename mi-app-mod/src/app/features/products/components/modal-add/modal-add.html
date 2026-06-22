@@ -1,0 +1,136 @@
+<!-- Fondo oscuro del modal -->
+<div class="modal"
+     [class.show]="isOpen()"
+     [style.display]="isOpen() ? 'block' : 'none'"
+     tabindex="-1">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+
+      <!-- Encabezado -->
+      <div class="modal-header bg-primary text-white">
+        <h5 class="modal-title">
+          <i-bs name="plus-circle"></i-bs>
+          Agregar Producto
+        </h5>
+        <button type="button" class="btn-close btn-close-white" (click)="cerrarModal()"></button>
+      </div>
+
+      <!-- Cuerpo -->
+      <div class="modal-body">
+        <form [formGroup]="productForm">
+          <div class="row g-3">
+
+            <!-- Nombre -->
+            <div class="col-md-6">
+              <label class="form-label">Nombre <span class="text-danger">*</span></label>
+              <input type="text" class="form-control"
+                     formControlName="nombre"
+                     placeholder="Ej: Laptop Dell XPS"
+                     [class.is-invalid]="f['nombre'].invalid && (f['nombre'].touched || f['nombre'].dirty)"
+                     [class.is-valid]="f['nombre'].valid && f['nombre'].touched">
+              @if (f['nombre'].invalid && (f['nombre'].touched || f['nombre'].dirty)) {
+                <div class="invalid-feedback">
+                  @if (f['nombre'].errors?.['required']) { <span>El nombre es obligatorio.</span> }
+                  @if (f['nombre'].errors?.['minlength']) { <span>Mínimo 3 caracteres.</span> }
+                </div>
+              }
+            </div>
+
+            <!-- Código -->
+            <div class="col-md-6">
+              <label class="form-label">Código <span class="text-danger">*</span></label>
+              <input type="text" class="form-control"
+                     formControlName="codigo"
+                     placeholder="Ej: ABC-1234"
+                     [class.is-invalid]="f['codigo'].invalid && (f['codigo'].touched || f['codigo'].dirty)"
+                     [class.is-valid]="f['codigo'].valid && f['codigo'].touched">
+              @if (f['codigo'].pending) {
+                <div class="form-text text-muted">
+                  <span class="spinner-border spinner-border-sm"></span> Buscando...
+                </div>
+              }
+              @if (f['codigo'].invalid && (f['codigo'].touched || f['codigo'].dirty)) {
+                <div class="invalid-feedback">
+                  @if (f['codigo'].errors?.['required']) { <span>El código es obligatorio.</span> }
+                  @if (f['codigo'].errors?.['pattern']) { <span>Formato inválido. Use AAA-0000 (mayúsculas).</span> }
+                  @if (f['codigo'].errors?.['codeExists']) { <span>Este código ya existe en la base de datos.</span> }
+                </div>
+              }
+            </div>
+
+            <!-- Fecha de Venta -->
+            <div class="col-md-6">
+              <label class="form-label">Fecha de Venta <span class="text-danger">*</span></label>
+              <input type="date" class="form-control"
+                     formControlName="fechaVenta"
+                     [class.is-invalid]="f['fechaVenta'].invalid && (f['fechaVenta'].touched || f['fechaVenta'].dirty)"
+                     [class.is-valid]="f['fechaVenta'].valid && f['fechaVenta'].touched">
+              @if (f['fechaVenta'].invalid && (f['fechaVenta'].touched || f['fechaVenta'].dirty)) {
+                <div class="invalid-feedback">La fecha es obligatoria.</div>
+              }
+            </div>
+
+            <!-- Precio -->
+            <div class="col-md-6">
+              <label class="form-label">Precio <span class="text-danger">*</span></label>
+              <input type="number" class="form-control"
+                     formControlName="precio"
+                     placeholder="Ej: 50000"
+                     [class.is-invalid]="f['precio'].invalid && (f['precio'].touched || f['precio'].dirty)"
+                     [class.is-valid]="f['precio'].valid && f['precio'].touched">
+              @if (f['precio'].invalid && (f['precio'].touched || f['precio'].dirty)) {
+                <div class="invalid-feedback">
+                  @if (f['precio'].errors?.['required']) { <span>El precio es obligatorio.</span> }
+                  @if (f['precio'].errors?.['min']) { <span>El precio mínimo es 0.</span> }
+                </div>
+              }
+            </div>
+
+            <!-- Puntuación -->
+            <div class="col-md-6">
+              <label class="form-label">Puntuación (1-200)</label>
+              <input type="number" class="form-control"
+                     formControlName="puntuacion"
+                     [class.is-invalid]="f['puntuacion'].invalid && (f['puntuacion'].touched || f['puntuacion'].dirty)"
+                     [class.is-valid]="f['puntuacion'].valid && f['puntuacion'].touched">
+              @if (f['puntuacion'].invalid && (f['puntuacion'].touched || f['puntuacion'].dirty)) {
+                <div class="invalid-feedback">
+                  @if (f['puntuacion'].errors?.['min']) { <span>Mínimo 1.</span> }
+                  @if (f['puntuacion'].errors?.['max']) { <span>Máximo 200.</span> }
+                </div>
+              }
+            </div>
+
+            <!-- Imagen -->
+            <div class="col-md-6">
+              <label class="form-label">Imagen (nombre del archivo)</label>
+              <input type="text" class="form-control"
+                     formControlName="imagen"
+                     placeholder="Ej: laptop.png">
+              <div class="form-text">El archivo debe estar en la carpeta <code>public/</code></div>
+            </div>
+
+          </div>
+        </form>
+      </div>
+
+      <!-- Footer -->
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" (click)="cerrarModal()">
+          <i-bs name="x-circle"></i-bs> Cancelar
+        </button>
+        <button type="button" class="btn btn-primary"
+                (click)="guardarProducto()"
+                [disabled]="productForm.invalid || productForm.pending">
+          <i-bs name="check-circle"></i-bs> Guardar
+        </button>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- Backdrop -->
+@if (isOpen()) {
+  <div class="modal-backdrop fade show"></div>
+}

@@ -1,0 +1,5 @@
+<div class="crop" [style.width.px]="starWidth()" [title]="starRating()">
+  @for (star of stars(); track $index) {
+    <span>&#9733;</span>
+  }
+</div>

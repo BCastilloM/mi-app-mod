@@ -1,0 +1,63 @@
+<div class="login-wrapper">
+  <div class="login-card">
+    <div class="login-header">
+      <img src="ACME_logo.png" alt="ACME Logo" width="80">
+      <h2>Empresa ACME</h2>
+      <p>Inicia sesión para continuar</p>
+    </div>
+
+    <form [formGroup]="loginForm">
+
+      <div class="mb-3">
+        <label class="form-label">Email</label>
+        <input type="email" class="form-control"
+               formControlName="email"
+               placeholder="correo@ejemplo.com"
+               [class.is-invalid]="f['email'].invalid && f['email'].touched"
+               [class.is-valid]="f['email'].valid && f['email'].touched">
+        @if (f['email'].invalid && f['email'].touched) {
+          <div class="invalid-feedback">
+            @if (f['email'].errors?.['required']) { <span>El email es obligatorio.</span> }
+            @if (f['email'].errors?.['email']) { <span>Formato de email inválido.</span> }
+          </div>
+        }
+      </div>
+
+      <div class="mb-3">
+        <label class="form-label">Contraseña</label>
+        <input type="password" class="form-control"
+               formControlName="password"
+               placeholder="••••••••"
+               [class.is-invalid]="f['password'].invalid && f['password'].touched"
+               [class.is-valid]="f['password'].valid && f['password'].touched">
+        @if (f['password'].invalid && f['password'].touched) {
+          <div class="invalid-feedback">
+            @if (f['password'].errors?.['required']) { <span>La contraseña es obligatoria.</span> }
+            @if (f['password'].errors?.['minlength']) { <span>Mínimo 6 caracteres.</span> }
+          </div>
+        }
+      </div>
+
+      @if (errorMsg) {
+        <div class="alert alert-danger">{{ errorMsg }}</div>
+      }
+
+      <button type="button" class="btn btn-primary w-100 mb-3"
+              (click)="login()"
+              [disabled]="loginForm.invalid">
+        Iniciar Sesión
+      </button>
+
+    </form>
+
+    <div class="divider">
+      <span>o continúa con</span>
+    </div>
+
+    <div class="google-btn-wrapper">
+      <!-- Google renderiza aquí su botón oficial vía GSI -->
+      <div id="google-signin-btn"></div>
+    </div>
+
+  </div>
+</div>

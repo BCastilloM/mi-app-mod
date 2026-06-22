@@ -1,0 +1,23 @@
+<div class="container-fluid mt-3">
+  <h3 class="mb-3"><i class="bi bi-geo-alt-fill text-danger"></i> Mapa</h3>
+
+  <!-- Buscador -->
+  <div class="input-group mb-3">
+    <input
+      type="text"
+      class="form-control"
+      placeholder="Buscar dirección..."
+      [(ngModel)]="searchQuery"
+      (keyup.enter)="onSearch()"
+    />
+    <button class="btn btn-primary" (click)="onSearch()">
+      <i class="bi bi-search"></i> Buscar
+    </button>
+  </div>
+
+  <!-- Error -->
+  <div *ngIf="errorMessage" class="alert alert-warning">{{ errorMessage }}</div>
+
+  <!-- Mapa -->
+  <div #mapContainer class="map-container rounded shadow"></div>
+</div>
