@@ -1,54 +1,32 @@
-# Proyecto ACME - Fusión completa
+# mi-app-mod
 
-## 📁 Estructura
+Aplicacion full-stack con Angular 21, Node.js/Express y MySQL, orquestada con Docker Compose.
 
-```
-mi-app-fusion-completo/
-├── mi-app-mod/          ← Proyecto Angular (tu proyecto original + cambios PPTs)
-└── backend-server/      ← Servidor Node.js nuevo
-    ├── app.js
-    ├── package.json
-    └── acme.sql
-```
+## Requisitos
 
-## 🚀 Pasos para correr
+- Docker Desktop instalado y corriendo
 
-### 1. Base de datos
-- Iniciar XAMPP (Apache + MySQL)
-- Abrir phpMyAdmin → importar `backend-server/acme.sql`
+## Levantar el proyecto
 
-### 2. Backend
 ```bash
-cd backend-server
-npm install
-npm start
+docker compose up --build
 ```
-→ Corre en http://localhost:3000
 
-### 3. Frontend
+Eso es todo. Docker construye las imagenes, inicializa la base de datos y levanta los tres servicios.
+
+| Servicio  | URL                   |
+|-----------|-----------------------|
+| Frontend  | http://localhost:8080 |
+| Backend   | http://localhost:3000 |
+
+## Detener el proyecto
+
 ```bash
-cd mi-app-mod
-npm install
-npm install bootstrap-icons
-ng serve -o
+docker compose down
 ```
-→ Corre en http://localhost:4200
 
-## ✅ Qué se mantiene de tu proyecto original
-- Estructura con AppModule (standalone: false)
-- ngx-bootstrap-icons (íconos <i-bs>)
-- index.html con CDN Bootstrap
-- Colores y estilos del navbar
-- angular.json, tsconfig, vscode config
+Para detener y eliminar tambien los datos de la base de datos:
 
-## ✅ Qué se agregó (de los PPTs)
-- Interface IProduct + ProductService con HTTP real
-- Filtro reactivo con signal + computed
-- Componente ProductListComponent con tabla completa
-- Componente StarComponent (estrellas con computed)
-- Pipe ImagePipe (imagen por defecto)
-- Pipes: currency CLP, date dd/MM/yyyy, uppercase, lowercase
-- Botón Crear Producto (POST)
-- Botones Eliminar (DELETE) y Actualizar (PUT)
-- LOCALE_ID es-CL (fechas en español)
-- Backend Node.js completo con MySQL y CORS
+```bash
+docker compose down -v
+```

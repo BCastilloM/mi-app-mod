@@ -1,0 +1,11 @@
+# Dependencias
+node_modules/
+backend-server/node_modules/
+
+# Logs
+npm-debug.log
+yarn-error.log
+
+# Sistema
+.DS_Store
+Thumbs.db

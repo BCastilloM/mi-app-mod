@@ -1,0 +1,12 @@
+{
+  "dependencies": {
+    "@abacritt/angularx-social-login": "^1.0.0",
+    "@angular/cdk": "^21.2.14",
+    "@angular/google-maps": "^21.0.0",
+    "@faker-js/faker": "^10.5.0",
+    "ngx-pagination": "^6.0.3"
+  },
+  "devDependencies": {
+    "@types/google.maps": "^3.65.1"
+  }
+}
