@@ -8,14 +8,20 @@ import { loginGuard } from './features/auth/guards/login-guard';
 import { User } from './features/users/components/user/user';
 import { ProductPagination } from './features/products/components/product-pagination/product-pagination';
 import { MapComponent } from './features/maps/components/map/map';
+import { ProductSalesComponent } from './features/dashboards/components/product-sales/product-sales';
+import { ForgotPasswordComponent } from './features/auth/components/forgot-password/forgot-password';
+import { ResetPasswordComponent } from './features/auth/components/reset-password/reset-password';
 
 const routes: Routes = [
   { path: 'login',               component: LoginComponent },
+  { path: 'forgot-password',     component: ForgotPasswordComponent },
+  { path: 'restablecer-password',component: ResetPasswordComponent },
   { path: 'home',                component: WelcomeComponent,     canActivate: [loginGuard] },
   { path: 'products',            component: ProductComponent,      canActivate: [loginGuard] },
   { path: 'users',               component: User,                  canActivate: [loginGuard] },
   { path: 'products-pagination', component: ProductPagination,     canActivate: [loginGuard] },
-  { path: 'maps',                component: MapComponent,          canActivate: [loginGuard] },
+  { path: 'maps',               component: MapComponent,          canActivate: [loginGuard] },
+  { path: 'dashboard',          component: ProductSalesComponent, canActivate: [loginGuard] },
   { path: '',                    redirectTo: 'home', pathMatch: 'full' },
   { path: '**',                  component: PageNotFoundComponent }
 ];

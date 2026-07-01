@@ -7,12 +7,12 @@
     <div class="modal-content">
 
       <!-- Encabezado -->
-      <div class="modal-header bg-primary text-white">
+      <div class="modal-header bg-warning text-dark">
         <h5 class="modal-title">
-          <i-bs name="plus-circle"></i-bs>
-          Agregar Producto
+          <i-bs name="pencil-square"></i-bs>
+          Editar Producto
         </h5>
-        <button type="button" class="btn-close btn-close-white" (click)="cerrarModal()"></button>
+        <button type="button" class="btn-close" (click)="cerrarModal()"></button>
       </div>
 
       <!-- Cuerpo -->
@@ -44,15 +44,9 @@
                      placeholder="Ej: ABC-1234"
                      [class.is-invalid]="f['codigo'].invalid && (f['codigo'].touched || f['codigo'].dirty)"
                      [class.is-valid]="f['codigo'].valid && f['codigo'].touched">
-              @if (f['codigo'].pending) {
-                <div class="form-text text-muted">
-                  <span class="spinner-border spinner-border-sm"></span> Buscando...
-                </div>
-              }
               @if (f['codigo'].invalid && (f['codigo'].touched || f['codigo'].dirty)) {
                 <div class="invalid-feedback">
                   @if (f['codigo'].errors?.['required']) { <span>El código es obligatorio.</span> }
-                  @if (f['codigo'].errors?.['codeExists']) { <span>Este código ya existe en la base de datos.</span> }
                 </div>
               }
             </div>
@@ -118,10 +112,10 @@
         <button type="button" class="btn btn-secondary" (click)="cerrarModal()">
           <i-bs name="x-circle"></i-bs> Cancelar
         </button>
-        <button type="button" class="btn btn-primary"
+        <button type="button" class="btn btn-warning"
                 (click)="guardarProducto()"
-                [disabled]="productForm.invalid || productForm.pending">
-          <i-bs name="check-circle"></i-bs> Guardar
+                [disabled]="productForm.invalid">
+          <i-bs name="check-circle"></i-bs> Guardar Cambios
         </button>
       </div>
 

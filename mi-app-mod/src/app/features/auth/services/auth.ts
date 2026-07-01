@@ -27,6 +27,14 @@ export class AuthService {
     return this.http.post(`${this.apiUrl}/google-login`, { idToken });
   }
 
+  requestPasswordReset(email: string): Observable<any> {
+    return this.http.post(`${this.apiUrl}/solicitar-recuperacion`, { email });
+  }
+
+  resetPassword(token: string, password: string): Observable<any> {
+    return this.http.post(`${this.apiUrl}/restablecer-password`, { token, password });
+  }
+
   saveToken(token: string): void {
     localStorage.setItem('token', token);
     this.isAuthenticated.set(true);

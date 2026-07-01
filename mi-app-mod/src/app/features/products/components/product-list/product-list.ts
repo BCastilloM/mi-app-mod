@@ -10,26 +10,18 @@ import { ProductService } from '../../services/product';
 })
 export class ProductListComponent implements OnInit, OnChanges, OnDestroy {
 
-  products = input<IProduct[]>([]);
+  products       = input<IProduct[]>([]);
   productsChange = output<IProduct[]>();
 
-  showImage = false;
-  imageWidth = 50;
+  showImage   = false;
+  imageWidth  = 50;
   imageMargin = 2;
 
   constructor(private productService: ProductService) {}
 
-  ngOnInit(): void {
-    console.log('ProductList ngOnInit');
-  }
-
-  ngOnChanges(): void {
-    console.log('ProductList ngOnChanges');
-  }
-
-  ngOnDestroy(): void {
-    console.log('ProductList ngOnDestroy');
-  }
+  ngOnInit(): void {}
+  ngOnChanges(): void {}
+  ngOnDestroy(): void {}
 
   toggleImage(): void {
     this.showImage = !this.showImage;
@@ -46,7 +38,8 @@ export class ProductListComponent implements OnInit, OnChanges, OnDestroy {
   updateProduct(product: IProduct): void {
     const updated: IProduct = {
       ...product,
-      precio: Math.floor(Math.random() * 100000) + 1000,
+      fechaVenta: product.fechaVenta.substring(0, 10),
+      precio:     Math.floor(Math.random() * 100000) + 1000,
       puntuacion: Math.floor(Math.random() * 5) + 1
     };
     this.productService.updateProduct(updated).subscribe(() => {

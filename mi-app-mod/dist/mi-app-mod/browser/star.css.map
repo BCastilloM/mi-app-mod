@@ -1,7 +1,0 @@
-{
-  "version": 3,
-  "sources": ["src/app/features/products/components/product-list/star/star.css"],
-  "sourcesContent": [".crop {\n  overflow: hidden;\n  white-space: nowrap;\n  color: gold;\n  font-size: 1.4em;\n}\n"],
-  "mappings": ";AAAA,CAAC;AACC,YAAU;AACV,eAAa;AACb,SAAO;AACP,aAAW;AACb;",
-  "names": []
-}

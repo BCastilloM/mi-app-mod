@@ -8,16 +8,12 @@
       Filtrado por: {{ listFilter() }}
     </div>
     <div class="col-md-2">
-      <button class="btn btn-success" (click)="abrirModal()">
+      <button class="btn btn-success" (click)="crearProducto()">
         <i-bs name="plus-circle"></i-bs>
         Crear Producto
       </button>
     </div>
   </div>
-
-  @if (isModalOpen()) {
-    <app-modal-add (cerrar)="cerrarModal()" (guardar)="guardarProducto($event)"></app-modal-add>
-  }
 
   <app-product-list
     [products]="filteredProducts()"

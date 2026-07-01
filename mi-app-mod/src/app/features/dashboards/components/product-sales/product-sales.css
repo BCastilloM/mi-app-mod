@@ -1,0 +1,32 @@
+.dashboard-container {
+  padding: 24px;
+}
+
+.dashboard-title {
+  font-size: 1.75rem;
+  font-weight: 700;
+  margin-bottom: 4px;
+  color: #333;
+}
+
+.dashboard-subtitle {
+  color: #777;
+  margin-bottom: 24px;
+  font-size: 0.95rem;
+}
+
+.chart-card {
+  background: #ffffff;
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  padding: 20px 24px;
+  margin-bottom: 32px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.07);
+}
+
+.chart-card h3 {
+  font-size: 1.1rem;
+  font-weight: 600;
+  margin-bottom: 16px;
+  color: #444;
+}

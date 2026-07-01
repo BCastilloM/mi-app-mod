@@ -26,7 +26,7 @@ export class ModalAddComponent implements OnInit {
   ngOnInit(): void {
     this.productForm = this.fb.group({
       nombre:     ['', [Validators.required, Validators.minLength(3)]],
-      codigo:     ['', [Validators.required, Validators.pattern('[A-Z]{3}-[0-9]{4}')],
+      codigo:     ['', [Validators.required],
                    [this.validarCodigoExistente.bind(this)]],
       fechaVenta: ['', [Validators.required]],
       precio:     [0,  [Validators.required, Validators.min(0)]],

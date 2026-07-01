@@ -30,6 +30,8 @@ services:
       context: ./backend-server
     container_name: acme_backend
     restart: unless-stopped
+    env_file:
+      - ./backend-server/.env
     environment:
       DB_HOST: mysql
       DB_USER: root

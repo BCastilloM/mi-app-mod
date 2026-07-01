@@ -1,11 +1,15 @@
 import { NgModule, provideBrowserGlobalErrorListeners, LOCALE_ID } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { provideHttpClient } from '@angular/common/http';
 import { CommonModule, registerLocaleData } from '@angular/common';
 import localeEsCL from '@angular/common/locales/es-CL';
 import { RouterModule } from '@angular/router';
 import { ScrollingModule } from '@angular/cdk/scrolling';
+import { NgxChartsModule } from '@swimlane/ngx-charts';
+import { ProductSalesComponent } from './features/dashboards/components/product-sales/product-sales';
+import { ModalEditComponent } from './features/products/components/modal-edit/modal-edit';
 
 
 import { AppRoutingModule } from './app-routing-module';
@@ -18,6 +22,8 @@ import { ImagePipe } from './shared/image.pipe';
 import { WelcomeComponent } from './features/home/welcome/welcome';
 import { PageNotFoundComponent } from './features/not-found/page-not-found';
 import { LoginComponent } from './features/auth/components/login/login';
+import { ForgotPasswordComponent } from './features/auth/components/forgot-password/forgot-password';
+import { ResetPasswordComponent } from './features/auth/components/reset-password/reset-password';
 import { User } from './features/users/components/user/user';
 import { ProductPagination } from './features/products/components/product-pagination/product-pagination';
 import { NgxPaginationModule } from 'ngx-pagination';
@@ -38,9 +44,13 @@ registerLocaleData(localeEsCL, 'es-CL');
     WelcomeComponent,
     PageNotFoundComponent,
     LoginComponent,
+    ForgotPasswordComponent,
+    ResetPasswordComponent,
     User,
     ProductPagination,
-    MapComponent
+    MapComponent,
+    ProductSalesComponent,
+    ModalEditComponent
   ],
   imports: [
     BrowserModule,
@@ -53,6 +63,8 @@ registerLocaleData(localeEsCL, 'es-CL');
     NgxPaginationModule,
     NgxBootstrapIconsModule.pick(allIcons),
     GoogleMapsModule,
+    BrowserAnimationsModule,
+    NgxChartsModule,
   ],
   providers: [
     provideBrowserGlobalErrorListeners(),

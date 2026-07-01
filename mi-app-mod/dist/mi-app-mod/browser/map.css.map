@@ -1,7 +1,0 @@
-{
-  "version": 3,
-  "sources": ["src/app/features/maps/components/map/map.css"],
-  "sourcesContent": [".map-container {\r\n  width: 100%;\r\n  height: 500px;\r\n  border: 1px solid #dee2e6;\r\n}\r\n"],
-  "mappings": ";AAAA,CAAC;AACC,SAAO;AACP,UAAQ;AACR,UAAQ,IAAI,MAAM;AACpB;",
-  "names": []
-}
